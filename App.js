@@ -14,6 +14,8 @@ import Overview from './screens/Overview';
 import Add from './screens/Add';
 import TipsAndTricks from './screens/TipsAndTricks';
 import ChatSupport from './screens/ChatSupport';
+import Notification from './screens/Notification';
+import Menu from './screens/Menu'
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -22,14 +24,14 @@ function CustomTabBarButton({ children, onPress }) {
   return (
     <TouchableOpacity
       style={{
-        top: -20,
+        top: -40,
         justifyContent: 'center',
         alignItems: 'center',
         shadowColor: '#000',
         shadowOffset: { width: 0, height: 10 },
         shadowOpacity: 0.25,
         shadowRadius: 5,
-        elevation: 5,
+        elevation: 20,
       }}
       onPress={onPress}
     >
@@ -52,24 +54,27 @@ function CustomTabBarButton({ children, onPress }) {
 function BottomTabNavigator() {
   return (
     <Tab.Navigator
-      screenOptions={{
-        tabBarShowLabel: false,
-        tabBarStyle: {
-          position: 'absolute',
-          left: 20,
-          right: 20,
-          elevation: 0,
-          backgroundColor: '#ffffff',
-          borderRadius: 20,
-          height: 70,
-          shadowOpacity: 0.2,
-          shadowOffset: { width: 0, height: 10 },
-          shadowRadius: 10,
-          paddingHorizontal: 10,
-          paddingBottom: 10,
-        },
-      }}
-    >
+    screenOptions={{
+      tabBarShowLabel: false,
+      tabBarStyle: {
+        position: 'absolute',
+        left: 20,
+        right: 20,
+        elevation: 0,
+        backgroundColor: '#ffffff',
+        borderRadius: 20,
+        height: 90,
+        shadowOpacity: 0.2,
+        shadowOffset: { width: 0, height: 10 },
+        shadowRadius: 10,
+        paddingHorizontal: 10,
+        paddingBottom: 10,
+      },
+      tabBarItemStyle: {
+        paddingTop: 25, // Adjust this value to move icons down
+      },
+    }}
+  >
       <Tab.Screen
         name="Home"
         component={Home}
@@ -128,6 +133,8 @@ export default function App() {
         <Stack.Screen name="Create" component={Create} options={{ headerShown: false }} />
         <Stack.Screen name="SignUp" component={SignUp} options={{ headerShown: false }} />
         <Stack.Screen name="SignIN" component={SignIN} options={{ headerShown: false }} />
+        <Stack.Screen name="Notification" component={Notification} options={{ headerShown: false}} />
+        <Stack.Screen name="Menu" component={Menu} options={{ headerShown: false}} />
         <Stack.Screen name="Main" component={BottomTabNavigator} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>
